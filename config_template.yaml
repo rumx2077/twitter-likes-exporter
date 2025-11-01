@@ -1,0 +1,24 @@
+# Common
+sites_path: "sites"
+site_name: "liked_tweets"
+timezone: "Asia/Shanghai"
+log: "liked_tweets.log"
+
+# Fetch JSON
+user_id: 
+header_authorization: 
+header_cookies:  # ct0 and auth_token are necessary
+enable_media_download: true
+media_filename_pattern: "{user_nick}_{datetime}_{media_type}{num}_tid{tweet_id}_uid{user_id}.{extension}"
+incremental_backup: false
+max_sync_count: null
+output_json_filename: "liked_tweets.json"
+
+# Biuld site
+theme_dir: "{root_dir}/site_theme"
+items_per_page: null
+index_page_filename: "index.html"
+
+# TODO
+# detail_page_template: "detail_template.html"
+# detail_page_filename_pattern: "{tweet_id}_{datetime}_detail.html"

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="{{ base_path }}static/styles.css" />
+  <link rel="stylesheet" href="{{ base_path }}static/lightbox.css" />
+</head>
+
+<body>
+  <h1 style="text-align: center;">Liked Tweets</h1>
+  {% if total_pages is defined %}
+  <div class="pagination">
+    <span class="ctrl">
+      {% if page_num > 1 %}
+      <a href="{{ prev_url }}">« Prev</a>
+      {% endif %}
+    </span>
+
+    {% for p in page_links %}
+    {% if p.num == page_num %}
+    <span class="current">{{ p.num }}</span>
+    {% else %}
+    <a href="{{ p.url }}">{{ p.num }}</a>
+    {% endif %}
+    {% endfor %}
+
+    <span class="ctrl">
+      {% if page_num < total_pages %} <a href="{{ next_url }}">Next »</a>
+        {% endif %}
+    </span>
+  </div>
+  {% endif %}
+
+  <div class="tweet_list">
+    {% for tweet in tweets %}
+    {% include "_tweet_card.html" %}
+    {% endfor %}
+  </div>
+
+  {% if total_pages is defined %}
+  <div class="pagination">
+    <span class="ctrl">
+      {% if page_num > 1 %}
+      <a href="{{ prev_url }}" class="ctrl">« Prev</a>
+      {% endif %}
+    </span>
+
+    {% for p in page_links %}
+    {% if p.num == page_num %}
+    <span class="current">{{ p.num }}</span>
+    {% else %}
+    <a href="{{ p.url }}">{{ p.num }}</a>
+    {% endif %}
+    {% endfor %}
+
+    <span class="ctrl">
+      {% if page_num < total_pages %} <a href="{{ next_url }}">Next »</a>
+        {% endif %}
+    </span>
+  </div>
+  {% endif %}
+  <script src="{{ base_path }}static/lightbox.js"></script>
+</body>
+
+</html>

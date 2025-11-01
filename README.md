@@ -19,7 +19,7 @@ pip install -r requirements.txt
 (It's just `requests`). Next you'll need to populate the `config.json` file (create it by copying `config_template.json`) with credentials needed to match how your web browser gets your likes from Twitter.com:
 
 1. Open up your web browser and ensure the Network web debugging tab is open so you can inspect network requests (in Chrome, it is under `Open Chrome Developer Console` `>` `Network`)
-2. Navigate to `https://twitter.com/<your_user_handle>/likes`
+2. Navigate to `https://twitter.com/<your_user_name>/likes`
 3. Look for a network request to an `api.twitter.com` domain path ending in `/Likes` (you can type `/likes` in the filter box at the top left of the debug console to find it quickly).
 4. From the request headers, find `userId`, `authorization`, `cookie` and `x-csrf-token` values and fill the corresponding fields in `config.json` (you can right click on the request and select `Copy` `>` `Copy as cURL` and paste into an editor window for the ease of finding these details):
     a. Copy the `Authorization` value (find it as `authorization: Bearer xxx`) and save as `HEADER_AUTHORIZATION` in `config.json`
@@ -55,11 +55,11 @@ The output JSON will be a list of dictionaries like the following:
    {
       "tweet_id": "780770946428829696",
       "user_id": "265447323",
-      "user_handle": "LeahTiscione",
-      "user_name": "Leah Tiscione",
+      "user_name": "LeahTiscione",
+      "user_nick": "Leah Tiscione",
       "user_avatar_url": "https://pbs.twimg.com/profile_images/1563330281838284805/aUtIY2vj_normal.jpg",
       "tweet_content":"What are you hiding in your locked instagram? sandwiches? Sunsets???? let us see your nephew!!!!",
-      "tweet_media_urls": [],
+      "tweet_media": [],
       "tweet_created_at": "Sun Mar 13 15:16:45 +0000 2011"
    }
 ]
@@ -85,7 +85,7 @@ unliked, this works like incremental retrieval such that you can run periodicall
 
 If you want your tweets as a local HTML file, you can run the second script to convert the output JSON file from the above step.
 
-NOTE: This will attempt to download all media images and tweet author avatars locally by default to avoid relying on Twitter hosting. You can override this by changing the `DOWNLOAD_IMAGES` boolean in `config.json` to `false`.
+NOTE: This will attempt to download all media images and tweet author avatars locally by default to avoid relying on Twitter hosting. You can override this by changing the `download_media` boolean in `config.json` to `false`.
 
 1. Be sure the `OUTPUT_JSON_FILE_PATH` value in `config.json` is pointing to the output JSON file of your tweets.
 2. Run:

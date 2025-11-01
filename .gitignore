@@ -133,5 +133,7 @@ dmypy.json
 
 *.json
 *.yaml
-config.json
+*.txt
+!config_template.*
 tweet_likes_html
+sites
