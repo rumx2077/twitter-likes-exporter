@@ -10,12 +10,12 @@
         {% endif %}
       {% endif %}
       {% if avatar_src %}
-      <img src="{{ avatar_src }}" />
+      <img src="{{ avatar_src|urlencode }}" />
       {% endif %}
     </div>
     <div class="author_context">
       <div class="tweet_author_handle">
-        <a href="https://www.twitter.com/{{ tweet.user_name }}/" target="_blank">@{{ tweet.user_name }}</a>
+        <a href="https://www.twitter.com/{{ tweet.user_name|urlencode }}/" target="_blank">@{{ tweet.user_name }}</a>
       </div>
       <div class="tweet_author_name">{{ tweet.user_nick }}</div>
     </div>
@@ -42,12 +42,12 @@
     {% set media_type = m.type | default('photo') %}
     <div class="tweet_image">
       {% if media_type == 'photo' %}
-      <a href="{{ media_src }}">
-        <img src="{{ media_src }}"/>
+      <a href="{{ media_src|urlencode }}">
+        <img src="{{ media_src|urlencode }}"/>
       </a>
       {% else %}
       <video controls>
-        <source src="{{ media_src }}">
+        <source src="{{ media_src|urlencode }}">
       </video>
       {% endif %}
     </div>
@@ -65,6 +65,6 @@
   {% endif %}
   <div class="tweet_created_at">{{ tweet.tweet_created_at }}</div>
   <div class="twitter_link">
-    <a href="https://www.twitter.com/{{ tweet.user_name }}/status/{{ tweet.tweet_id }}/" target="_blank">Original tweet &#8599;</a>
+    <a href="https://www.twitter.com/{{ tweet.user_name|urlencode }}/status/{{ tweet.tweet_id }}/" target="_blank">Original tweet &#8599;</a>
   </div>
 </div>

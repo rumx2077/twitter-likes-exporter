@@ -5,8 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="{{ base_path }}static/styles.css" />
-  <link rel="stylesheet" href="{{ base_path }}static/lightbox.css" />
+  <link rel="stylesheet" href="{{ base_path|urlencode }}static/styles.css" />
+  <link rel="stylesheet" href="{{ base_path|urlencode }}static/lightbox.css" />
 </head>
 
 <body>
@@ -15,7 +15,7 @@
   <div class="pagination">
     <span class="ctrl">
       {% if page_num > 1 %}
-      <a href="{{ prev_url }}">« Prev</a>
+      <a href="{{ prev_url|urlencode }}">« Prev</a>
       {% endif %}
     </span>
 
@@ -23,12 +23,12 @@
     {% if p.num == page_num %}
     <span class="current">{{ p.num }}</span>
     {% else %}
-    <a href="{{ p.url }}">{{ p.num }}</a>
+    <a href="{{ p.url|urlencode }}">{{ p.num }}</a>
     {% endif %}
     {% endfor %}
 
     <span class="ctrl">
-      {% if page_num < total_pages %} <a href="{{ next_url }}">Next »</a>
+      {% if page_num < total_pages %} <a href="{{ next_url|urlencode }}">Next »</a>
         {% endif %}
     </span>
   </div>
@@ -44,7 +44,7 @@
   <div class="pagination">
     <span class="ctrl">
       {% if page_num > 1 %}
-      <a href="{{ prev_url }}" class="ctrl">« Prev</a>
+      <a href="{{ prev_url|urlencode }}" class="ctrl">« Prev</a>
       {% endif %}
     </span>
 
@@ -52,17 +52,17 @@
     {% if p.num == page_num %}
     <span class="current">{{ p.num }}</span>
     {% else %}
-    <a href="{{ p.url }}">{{ p.num }}</a>
+    <a href="{{ p.url|urlencode }}">{{ p.num }}</a>
     {% endif %}
     {% endfor %}
 
     <span class="ctrl">
-      {% if page_num < total_pages %} <a href="{{ next_url }}">Next »</a>
+      {% if page_num < total_pages %} <a href="{{ next_url|urlencode }}">Next »</a>
         {% endif %}
     </span>
   </div>
   {% endif %}
-  <script src="{{ base_path }}static/lightbox.js"></script>
+  <script src="{{ base_path|urlencode }}static/lightbox.js"></script>
 </body>
 
 </html>
